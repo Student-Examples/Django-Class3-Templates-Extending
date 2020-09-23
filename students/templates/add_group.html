@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="header is-size-4">Добавить группу</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="field">
+            <label class="label">Название</label>
+            <div class="control">
+                <input class="input" type="text" name="name" placeholder="Название">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Курс</label>
+            <div class="control">
+                <input class="input" type="number" name="course" placeholder="Курс">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Предмет</label>
+            <div class="control">
+                <div class="select">
+                    <select name="stream">
+                        <option value="it">Информационные т</option>
+                        <option value="ux/ui">UX/UI</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        {% if error %}
+            <div style="color: red;">{{ error }}</div>
+        {% endif %}
+
+        <input class="button is-warning" type="submit" value="Создать">
+    </form>
+{% endblock %}

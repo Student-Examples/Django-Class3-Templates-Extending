@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-    <h1>{{ header }}</h1>
-    <a class="button" href="/about">Go to About</a>
+
+    <a class="button" href="{% url 'add_group' %}">Добавить группу</a>
+
+    <h1 class="header is-size-4">Группы</h1>
+    <ul>
+        {% for group in groups %}
+            <li> <a href="{% url 'group' group.id %}">{{ group.name }}</a> </li>
+        {% endfor %}
+    </ul>
+
+    <img style="width: 64px; height: 64px;" src="{% static 'img/house.png' %}" alt="Дом">
 {% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="header is-size-4">{{ group.name }} </h1>
+
+    <strong>Студенты</strong>
+    <ul>
+        {% for student in group.students.all %}
+            <li>{{ student.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

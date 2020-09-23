@@ -1,0 +1,2 @@
+class GroupForm():
+    pass

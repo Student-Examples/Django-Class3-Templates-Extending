@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from students.views import home_page, HomeView, AboutView
+from students.views import HomeView, AboutView, GroupView, AddGroupView
 
 urlpatterns = [
-    path("", home_page),
-    path("home/", HomeView.as_view(), name="home"),
+    path("", HomeView.as_view(), name="home"),
+    path("groups/<int:group_id>/", GroupView.as_view(), name="group"),
+    path("groups/new/", AddGroupView.as_view(), name="add_group"),
     path("about/", AboutView.as_view(), name="about"),
 
     path('admin/', admin.site.urls),
