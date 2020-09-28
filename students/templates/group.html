@@ -3,6 +3,11 @@
 {% block content %}
     <h1 class="header is-size-4">{{ group.name }} </h1>
 
+    <div>
+        <a href="{% url 'add_student' group.id %}" class="button is-link">Добавить студента</a>
+        <a href="{% url 'edit_group' group.id %}" class="button is-warning">Изменить группу</a>
+    </div>
+
     <strong>Студенты</strong>
     <ul>
         {% for student in group.students.all %}

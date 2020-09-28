@@ -36,3 +36,32 @@ class Student(Model):
     class Meta:
         verbose_name_plural = "Студенты"
         verbose_name = "Студент"
+
+
+class Teacher(models.Model):
+    name = models.CharField(max_length=255, verbose_name="ФИО")
+    subject = models.CharField(max_length=255, verbose_name="Предмет")
+    position = models.CharField(max_length=255, verbose_name="Должность",
+                                null=True, blank=True)
+    group = models.ForeignKey(Group, verbose_name="Группа", related_name="teachers",
+                              on_delete=models.CASCADE)
+    hired_date = models.DateField(verbose_name="Дата наема")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Учителя"
+        verbose_name = "Учитель"
+
+# Создать модель Teacher для учителя
+# 1. name - ФИО
+# 2. subject - предмет
+# 3. position = должность (не обяз)
+# 4. group - в какой группе преподает
+# 5. hired_date - дата наема на работу
+
+# Создать отдельную страницу где показаны все учителя,
+# где есть кнопка "Добавить учителя"
+
+# Страница добавления нового учителя

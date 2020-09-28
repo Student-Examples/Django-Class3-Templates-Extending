@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <a class="button" href="{% url 'add_teacher' %}">Добавить учителя</a>
+
+    <h1 class="header is-size-4">Учителя</h1>
+    <ul>
+        {% for teacher in teachers %}
+            <li>{{ teacher.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

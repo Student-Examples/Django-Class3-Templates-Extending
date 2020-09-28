@@ -24,17 +24,28 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a href="/home" class="navbar-item">
+                <a href="/" class="navbar-item">
                     Home
                 </a>
                 <a href="/about" class="navbar-item">
                     About
+                </a>
+                <a href="{% url 'teachers' %}" class="navbar-item">
+                    Учителя
                 </a>
             </div>
         </div>
     </nav>
 
     <div class="container">
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="notification is-success">{{ message }}</div>
+            {% else %}
+                <div class="notification is-danger">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+
         {% block content %}
             <h1>Base template</h1>
         {% endblock %}
