@@ -14,14 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
 from django.urls import path
 
 from students.views import HomeView, AboutView, GroupView, AddGroupView, AddStudentView, TeachersView, AddTeacherView, \
     FeedbackView, EditGroupView
+from students.views_ext.accounts import ProfileView, LogoutView
 
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
-    path("groups/<int:group_id>/", GroupView.as_view(), name="group"),
+    path("groups/<int:group_id>/", login_required(GroupView.as_view()), name="group"),
 
     path("groups/<int:group_id>/edit/", EditGroupView.as_view(), name="edit_group"),
 
@@ -33,5 +36,8 @@ urlpatterns = [
 
     path("feedback/", FeedbackView.as_view(), name="feedback"),
 
+    path('accounts/login/', LoginView.as_view(), name="login"),
+    path('accounts/logout/', LogoutView.as_view(), name="logout"),
+    path('accounts/profile/', ProfileView.as_view()),
     path('admin/', admin.site.urls),
 ]

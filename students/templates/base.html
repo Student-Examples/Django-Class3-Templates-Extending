@@ -34,6 +34,17 @@
                     Учителя
                 </a>
             </div>
+
+            {% if user.is_authenticated %}
+                <div class="navbar-end">
+                    <span class="navbar-item"> {{ user.username }} </span>
+                    <a href="{% url 'logout' %}" class="navbar-item">Выход</a>
+                </div>
+            {% else %}
+                <div class="navbar-end">
+                    <a href="{% url 'login' %}" class="navbar-item">Вход</a>
+                </div>
+            {% endif %}
         </div>
     </nav>
 

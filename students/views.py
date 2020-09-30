@@ -9,10 +9,6 @@ from students.forms import GroupForm, StudentForm, TeacherForm, FeedbackForm
 from students.models import Group, Teacher
 
 
-def asdsadasd(request, group_id):
-    return
-
-
 class HomeView(View):
     def dispatch(self, request, *args, **kwargs):
         groups = Group.objects.all()
