@@ -40,7 +40,6 @@ class AddGroupView(TemplateView):
             if form.is_valid():
                 form.save()
                 messages.success(request, "Группа успешно создана")
-                messages.error(request, "Ошибка !!!!!!!!!!")
                 return redirect("/")
         return render(request, self.template_name, {"form": form})
 

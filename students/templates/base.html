@@ -37,12 +37,13 @@
 
             {% if user.is_authenticated %}
                 <div class="navbar-end">
-                    <span class="navbar-item"> {{ user.username }} </span>
+                    <a href="{% url 'profile' %}" class="navbar-item"> {{ user.username }} </a>
                     <a href="{% url 'logout' %}" class="navbar-item">Выход</a>
                 </div>
             {% else %}
                 <div class="navbar-end">
                     <a href="{% url 'login' %}" class="navbar-item">Вход</a>
+                    <a href="{% url 'register' %}" class="navbar-item">Регистрация</a>
                 </div>
             {% endif %}
         </div>

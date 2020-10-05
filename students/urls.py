@@ -20,7 +20,7 @@ from django.urls import path
 
 from students.views import HomeView, AboutView, GroupView, AddGroupView, AddStudentView, TeachersView, AddTeacherView, \
     FeedbackView, EditGroupView
-from students.views_ext.accounts import ProfileView, LogoutView
+from students.views_ext.accounts import ProfileView, LogoutView, RegisterView
 
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
@@ -38,6 +38,7 @@ urlpatterns = [
 
     path('accounts/login/', LoginView.as_view(), name="login"),
     path('accounts/logout/', LogoutView.as_view(), name="logout"),
-    path('accounts/profile/', ProfileView.as_view()),
+    path('accounts/register/', RegisterView.as_view(), name="register"),
+    path('accounts/profile/', ProfileView.as_view(), name="profile"),
     path('admin/', admin.site.urls),
 ]
