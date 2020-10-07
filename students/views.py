@@ -1,11 +1,15 @@
+from django.conf import settings
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views import View
 from django.views.generic import TemplateView
 
 from students.forms import GroupForm, StudentForm, TeacherForm, FeedbackForm
+from students.mail import MailSender
 from students.models import Group, Teacher
 
 
@@ -39,6 +43,7 @@ class AddGroupView(TemplateView):
 
             if form.is_valid():
                 form.save()
+                MailSender.notify_about_new_group(request, form.instance)
                 messages.success(request, "Группа успешно создана")
                 return redirect("/")
         return render(request, self.template_name, {"form": form})

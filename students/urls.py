@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
-from django.urls import path
+from django.urls import path, include
 
 from students.views import HomeView, AboutView, GroupView, AddGroupView, AddStudentView, TeachersView, AddTeacherView, \
     FeedbackView, EditGroupView
@@ -35,10 +35,6 @@ urlpatterns = [
     path("teachers/new/", AddTeacherView.as_view(), name="add_teacher"),
 
     path("feedback/", FeedbackView.as_view(), name="feedback"),
-
-    path('accounts/login/', LoginView.as_view(), name="login"),
-    path('accounts/logout/', LogoutView.as_view(), name="logout"),
-    path('accounts/register/', RegisterView.as_view(), name="register"),
-    path('accounts/profile/', ProfileView.as_view(), name="profile"),
+    path('accounts/', include("students.views_ext.account_urls")),
     path('admin/', admin.site.urls),
 ]

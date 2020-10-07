@@ -123,3 +123,15 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     "students/static"
 ]
+
+# Email settings
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv("EMAIL_USERNAME")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
+DEFAULT_FROM_EMAIL = 'Students site'
+DEFAULT_TO_EMAIL = os.getenv("EMAIL_USERNAME")
+
+
